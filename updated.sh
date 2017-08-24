@@ -1,5 +1,23 @@
 #!/bin/bash
-set -x
+################################################################################
+# Copyright (c) 2014-2017, Rean Cloud, Inc.
+#
+# < LICENSE INFORMATION >
+#
+#Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+#CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.#
+#-------------------------------------------------------------------------------
+# Author : venkata.bandreddi <venkata.bandreddi@reancloud.com> ____________________________________ LOG ______________________________________ 24AUG2017:venkata.bandreddi
+#           + Initial copy
+################################# DESCRIPTION ##################################
+# Description: This script used to locate ,copy file to S3 / local ,truncate and remove the old log file. Note: Not older than two year,If locate older files more than two years change the date in while.
+#Usage : <ScriptName> [-l <name_of_logfile>][-d <1..730>][-n <option_name_of_bucket>][-p <option_local_path>][-x <option_log_rotate>][-f <fetch|find_logfile>][-s <option_copy_to_s3>][-c <option_copy_to_local>][-t <option_truncate>][-r <option_remove>]
+####################### BUG REPORT / Feature Request ###########################
+# support@reancloud.com
+################################################################################
+
+#This function 'set -x' is used to view the step by step execution of this script
+#set -x
 usage()
 {
 	echo "Usage: $0 [-l <name_of_logfile>][-d <1..730>][-n <option_name_of_bucket>][-p <option_local_path>][-x <option_log_rotate>][-f <fetch|find_logfile>][-s <option_copy_to_s3>][-c <option_copy_to_local>][-t <option_truncate>][-r <option_remove>]" 1>&2;
@@ -67,5 +85,5 @@ case "$take1" in
 		usage
 esac
 done
-
+#Holds the index to the next argument to be processed
 shift $((OPTIND-1))
